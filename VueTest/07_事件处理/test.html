@@ -20,7 +20,7 @@
   .enter : 操作的是enter键
 -->
 
-<div id="example">
+<!--<div id="example">
 
   <h2>1. 绑定监听</h2>
   <button @click="test1">test1</button>
@@ -37,10 +37,28 @@
   <input type="text" @keyup.13="test7">
   <input type="text" @keyup.enter="test7">
 
+</div>-->
+
+<div id="app">
+  <h2>1. 绑定监听</h2>
+  <button @click="test1">test1</button>
+  <button @click="test2('abc')">test2</button>
+  <button @click="test3($event)">test3</button>
+
+  <h2>2. 事件修饰符</h2>
+  <div style="width: 200px; height: 200px;background-color:skyblue;" @click="test4" >
+    <div style="width: 100px; height: 100px;background-color:green;" @click.stop="test5">
+      sdfsdf
+    </div>
+  </div>
+  <a href="http://www.baidu.com" @click.prevent="test6">❤芯</a>
+
+  <h2>3. 按键修饰符</h2>
+  <input type="text" @keyup.enter="test7">
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
-<script type="text/javascript">
+<script type="text/html">
   new Vue({
     el: '#example',
     data: {
@@ -73,6 +91,34 @@
         alert(event.target.value)
       }
     }
+  })
+</script>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      test1() {
+        alert('test1')
+      },
+      test2(msg) {
+        alert(msg);
+      },
+      test3(event) {
+        alert(event.target.innerHTML)
+      },
+      test4() {
+        alert(4)
+      },
+      test5() {
+        alert(5)
+      },
+      test6() {
+        alert('芯❤')
+      },
+      test7(event) {
+        alert(event.target.value)
+      }
+    },
   })
 </script>
 </body>

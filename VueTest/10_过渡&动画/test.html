@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>10_过渡&动画1</title>
-  <style>
+<!--  <style>
     /*指定过渡样式*/
     .xxx-enter-active, .xxx-leave-active {
       transition: opacity 1s
@@ -26,6 +26,25 @@
       opacity: 0;
       transform: translateX(20px)
     }
+  </style>-->
+  <style>
+    .xxx-enter-active, .xxx-leave-active {
+      transition: opacity 2s;
+    }
+    .xxx-enter, .xxx-leave-to {
+      opacity: 0;
+    }
+
+    .yyy-enter-active {
+      transition: all 1s;
+    }
+    .yyy-leave-active {
+      transition: all 3s;
+    }
+    .yyy-enter, .yyy-leave-to {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
   </style>
 </head>
 <body>
@@ -46,7 +65,7 @@
 
 
 
-<div id="demo">
+<!--<div id="demo">
   <button @click="show = !show">Toggle</button>
   <transition name="xxx">
     <p v-show="show">hello</p>
@@ -59,11 +78,22 @@
   <transition name="move">
     <p v-show="show">hello</p>
   </transition>
+</div>-->
+
+<div id="app">
+  <button @click="isShow=!isShow">toggle</button>
+  <transition name="xxx">
+    <p v-show="isShow">廖芯小仙女</p>
+  </transition>
 </div>
-
-
+<div id="app1">
+  <button @click="isShow=!isShow">toggle</button>
+  <transition name="yyy">
+    <p v-show="isShow">廖芯小仙女</p>
+  </transition>
+</div>
 <script type="text/javascript" src="../js/vue.js"></script>
-<script type="text/javascript">
+<script type="text/html">
   new Vue({
     el: '#demo',
     data: {
@@ -78,6 +108,26 @@
     }
   })
 
+</script>
+
+<script>
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        isShow: true,
+      }
+    }
+  });
+
+  new Vue({
+    el: '#app1',
+    data() {
+      return {
+        isShow: true,
+      }
+    }
+  })
 </script>
 </body>
 </html>

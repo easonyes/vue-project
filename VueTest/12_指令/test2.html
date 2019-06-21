@@ -28,7 +28,7 @@
   2. 功能类型于v-text, 但转换为全小写
 -->
 
-<div id="test">
+<!--<div id="test">
   <p v-upper-text="msg"></p>
   <p v-lower-text="msg"></p>
 </div>
@@ -36,10 +36,20 @@
 <div id="test2">
   <p v-upper-text="msg"></p>
   <p v-lower-text="msg"></p>
+</div>-->
+
+<div id="app">
+  <p v-upper-text="msg"></p>
+  <p v-lower-text="msg"></p>
+</div>
+
+<div id="app1">
+  <p v-upper-text="msg1"></p>
+  <p v-lower-text="msg1"></p>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
-<script type="text/javascript">
+<script type="text/html">
   // 注册一个全局指令
   // el: 指令所在的标签对象
   // binding: 包含指令相关数据的容器对象
@@ -66,6 +76,34 @@
     el: '#test2',
     data: {
       msg: "I Like You Too"
+    }
+  })
+</script>
+
+<script>
+  //定义全局指令
+  Vue.directive('upper-text', function (el, binding) {
+    // console.log(el, binding);
+    el.textContent = binding.value.toUpperCase();
+  })
+
+  new Vue({
+    el: '#app',
+    data: {
+      msg: 'LiaoXin xiao xian nv'
+    },
+    directives: {
+      'lower-text': function (el, binding) {
+        // console.log(el, binding);
+        el.textContent = binding.value.toLowerCase();
+      }
+    }
+  });
+
+  new Vue({
+    el: '#app1',
+    data: {
+      msg1: 'LiaoXin BIG FOOL'
     }
   })
 </script>

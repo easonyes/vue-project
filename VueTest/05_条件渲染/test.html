@@ -14,23 +14,40 @@
   如果需要频繁切换 v-show 较好
 -->
 
-<div id="demo">
-  <p v-if="ok">表白成功</p>
-  <p v-else>表白失败</p>
+<!--<div id="demo">-->
+  <!--<p v-if="ok">表白成功</p>-->
+  <!--<p v-else>表白失败</p>-->
 
-  <hr>
-  <p v-show="ok">求婚成功</p>
-  <p v-show="!ok">求婚失败</p>
+  <!--<hr>-->
+  <!--<p v-show="ok">求婚成功</p>-->
+  <!--<p v-show="!ok">求婚失败</p>-->
+
+  <!--<button @click="ok=!ok">切换</button>-->
+<!--</div>-->
+<div id="app">
+  <p v-if="ok">成功</p>
+  <p v-else>失败</p>
+
+  <p v-show="ok">成功啊啊啊</p>
+  <p v-show="!ok">失败啊啊啊</p>
 
   <button @click="ok=!ok">切换</button>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
-<script type="text/javascript">
+<script type="text/html">
   new Vue({
     el: '#demo',
     data: {
       ok: true,
+    }
+  })
+</script>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      ok: false,
     }
   })
 </script>

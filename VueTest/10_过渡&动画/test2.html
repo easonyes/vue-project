@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>10_过渡&动画2</title>
-  <style>
+<!--  <style>
     .bounce-enter-active {
       animation: bounce-in .5s;
     }
@@ -21,22 +21,49 @@
         transform: scale(1);
       }
     }
+  </style>-->
+
+  <style>
+    .xxx-enter-active {
+      animation: bounce-in 1s;
+    }
+    .xxx-leave-active {
+      animation: bounce-in 1s reverse;
+    }
+    @keyframes bounce-in {
+      0% {
+        transform: scale(0);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
   </style>
 </head>
 <body>
 
-<div id="example-2">
+<!--<div id="example-2">
   <button @click="show = !show">Toggle show</button>
   <br>
   <transition name="bounce">
     <p v-if="show" style="display: inline-block">Lorem</p>
   </transition>
-</div>
+</div>-->
 
+<div id="app">
+  <button @click="show=!show">Toggle show</button>
+  <br>
+  <transition name="xxx">
+    <p v-show="show" style="display: inline-block;">廖芯小仙女</p>
+  </transition>
+</div>
 <script type="text/javascript" src="../js/vue.js"></script>
 <script>
   new Vue({
-    el: '#example-2',
+    el: '#app',
     data: {
       show: true
     }

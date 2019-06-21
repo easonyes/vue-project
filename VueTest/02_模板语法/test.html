@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:>
 <head>
   <meta charset="UTF-8">
   <title>02_模板语法</title>
@@ -31,33 +31,53 @@
 
 <div id="app">
   <h2>1. 双大括号表达式</h2>
-  <p>{{content}}</p>
-  <p>{{content.toUpperCase()}}</p>
+  <p>{{msg}}</p>
+  <p>{{msg.toUpperCase()}}</p>
+  <p v-html="msg"></p>
 
   <h2>2. 指令一: 强制数据绑定</h2>
-  <a href="url">访问指定站点</a><br>
-  <a v-bind:href="url">访问指定站点2</a><br>
-  <a :href="url">访问指定站点2</a><br>
+  <img :src="imgUrl" alt="">
+  <!--<a href="url">访问指定站点</a><br>-->
+  <!--<a v-bind:href="url">访问指定站点2</a><br>-->
+  <!--<a :href="url">访问指定站点2</a><br>-->
 
   <h2>3. 指令二: 绑定事件监听</h2>
-  <button v-on:click="test">点我</button>
-  <button @click="test">点我</button>
+  <button @click="test">test1</button>
+  <button @click="test2(msg)">xx</button>
+  <!--<button v-on:click="test">点我</button>-->
+  <!--<button @click="test">点我</button>-->
 
 </div>
 
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  // new Vue({
+  //   el: '#app',
+  //   data: {
+  //     content: 'NBA I Love This Game',
+  //     url: 'http://www.atguigu.com'
+  //   },
+  //   methods: {
+  //     test () {
+  //       alert('好啊!!!')
+  //     }
+  //   }
+  // })
   new Vue({
     el: '#app',
     data: {
-      content: 'NBA I Love This Game',
-      url: 'http://www.atguigu.com'
+      msg: '<a href="http://www.baidu.com">hello</a>',
+      imgUrl: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3760012354,3735259018&fm=27&gp=0.jpg',
+
     },
-    methods: {
-      test () {
-        alert('好啊!!!')
-      }
+    methods:{
+      test() {
+        alert('嘻嘻');
+      },
+      test2(text) {
+        alert(text);
+      },
     }
   })
 </script>

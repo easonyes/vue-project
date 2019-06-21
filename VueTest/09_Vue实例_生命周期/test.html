@@ -23,13 +23,17 @@
   beforeDestory(): 做收尾工作, 如: 清除定时器
 -->
 
-<div id="test">
+<!--<div id="test">
   <button @click="destroyVue">destory vue</button>
   <p v-if="isShow">尚硅谷IT教育</p>
+</div>-->
+<div id="app">
+  <button @click="destroyVm">destroy vue</button>
+  <p v-show="isShow">廖芯小仙女</p>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
-<script type="text/javascript">
+<script type="text/html">
   new Vue({
     el: '#test',
     data: {
@@ -56,6 +60,57 @@
       }
     }
   })
+
+
+</script>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      isShow: true,
+    },
+    // 1 初始化
+    beforeCreate() {
+      console.log('beforeCreate()');
+    },
+    created() {
+      console.log('created()');
+    },
+    beforeMount() {
+      console.log('beforeMount()');
+    },
+    mounted() {
+      // 初始化显示之后，立即调用
+      console.log('mounted()');
+      this.intervalId = setInterval(() => {
+        console.log('我还在');
+        this.isShow = !this.isShow;
+      }, 1000)
+    },
+    // 2 更新阶段
+    beforeUpdate() {
+      console.log('beforeUpdate()');
+    },
+    updated() {
+      console.log('updated()');
+    },
+
+    // 3 死亡阶段
+    beforeDestroy() {
+      // 清楚定时器
+      console.log('beforeDestroy()');
+      clearInterval(this.intervalId);
+    },
+
+    destroyed() {
+      console.log('destroyed()');
+    },
+    methods: {
+      destroyVm () {
+        this.$destroy();
+      }
+    }
+  });
 
 
 </script>
